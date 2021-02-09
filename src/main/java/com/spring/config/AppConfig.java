@@ -42,8 +42,8 @@ public class AppConfig {
         localSessionFactoryBean.setDataSource(getDataSource());
 
         Properties properties = new Properties();
-        properties.put("show_sql", env.getProperty("spring.jpa.show_sql"));
-        properties.put("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl.auto"));
+        properties.put("show_sql", env.getProperty("hibernate.show_sql"));
+        properties.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.ddl.auto"));
         localSessionFactoryBean.setHibernateProperties(properties);
 
         localSessionFactoryBean.setAnnotatedClasses(User.class);
