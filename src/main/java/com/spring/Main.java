@@ -20,5 +20,6 @@ public class Main {
         userService.add(user);
 
         System.out.println(userService.listUsers());
+        context.close();
     }
 }
