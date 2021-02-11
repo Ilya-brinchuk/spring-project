@@ -6,13 +6,12 @@ import com.spring.service.UserService;
 import com.spring.service.impl.UserMapper;
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     private final UserService userService;
@@ -23,7 +22,6 @@ public class UserController {
         this.userMapper = userMapper;
     }
 
-    @ResponseBody
     @GetMapping("/inject")
     public void createUsers() {
         User user = new User();
@@ -44,7 +42,6 @@ public class UserController {
         userService.add(userJohn);
     }
 
-    @ResponseBody
     @GetMapping("/{userId}")
     public UserResponseDto get(@PathVariable(value = "userId") Long id) {
         User user = userService.get(id);
@@ -52,7 +49,6 @@ public class UserController {
         return userResponseDto;
     }
 
-    @ResponseBody
     @GetMapping
     public List<UserResponseDto> getAll() {
         return userService.listUsers().stream()
